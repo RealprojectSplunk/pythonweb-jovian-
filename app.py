@@ -1,11 +1,11 @@
-from flask import Flask
+from flask import Flask, render_template
 
 app=Flask(__name__)
 @app.route("/")
-def hello():
-    return "<p>Hello, World!</p>"
+def home():
+    return render_template("home.html")
 
 
-if 1==1:
+if __name__=="__main__":
   print("i am inside you")
   app.run(host='0.0.0.0',debug=True)
