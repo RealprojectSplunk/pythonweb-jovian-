@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title class="text-center">Parayil LLC Group</title>
+  <title class="text-center"  mt-2 "mt-4" > Parayil LLC Group </title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
   
@@ -17,13 +17,23 @@
   
     <div class="container">
 <h4 class="text-center">About Parayil </h4>
+  <p class= text-center >  We pride ourselves on being at the intersection of cutting-edge technology and the dynamic world of real estate finance. Our mission is to empower our clients with innovative solutions that enhance their real estate investments while leveraging the latest advancements in IT</p>
     </div>
 
-    <div class="container">
-     <button class="text-center">Contact Us</button>
+    <div class=text-center>
+     <button class=btn btn-primary btn-lg>Contact Us</button>
 </div>
       
+     <div class=text-center>
+       <button class=btn btn-primary btn-lg>{{Company }} Open Positions</button>
+       </div>
 
+       <div>
+  {% for job in jobs %}
+    <div class=text-center> {{job['title']}} </div>
+  {% endfor %}
+         
+       </div>
 </body>
  
 </html>
