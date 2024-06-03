@@ -28,12 +28,45 @@
        <button class=btn btn-primary btn-lg>{{Company }} Open Positions</button>
        </div>
 
-       <div>
-  {% for job in jobs %}
-    <div class=text-center> {{job['title']}} </div>
-  {% endfor %}
+    
+  <div class="row d-flex justify-content-center">
+  
+    <div class="card" style="width: 28rem;">
+      
+        <ul class="list-group list-group-flush">
+
+           <div class=col>
+                 {% for job in jobs %}
+
+              <div class=col>
+                <li class="list-group-item"> 
+                  <div class=col>
+          
+                  {{job['title']}} 
+
+                     </div>
          
-       </div>
+                   <div class=col>
+              <h6 class=text-right>Location: {{job['location']}}</h6>
+                    
+                     </div>
+                  <div class=col>
+              <button class=btn btn-primary btn-lg> Apply</button>
+                 
+                    </div>
+                </li>
+                 </div>
+                  {% endfor %}
+              </div>
+
+           
+
+
+        </ul>
+    </div>
+  </div>
+   
+
 </body>
  
 </html>
