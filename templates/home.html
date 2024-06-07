@@ -9,15 +9,24 @@
 </head>
   
 <body>
-  <div class="container">
-  <h1 class="text-center">Parayil LLC Group</h1>
+ 
+  
+
+  
+         <div class="container">
+     {%include "nav.html" %}
+ 
+    
+
+    
+  <h1 class="text-center"></h1>
   </div>
   
-  <img  class="img-fluid" src="static/banner.jpeg" height="30px">
+  <img  src="static/banner.jpeg" height="500px" width=2000px>
   
     <div class="container">
 <h4 class="text-center">About Parayil </h4>
-  <p class= text-center >  We pride ourselves on being at the intersection of cutting-edge technology and the dynamic world of real estate finance. Our mission is to empower our clients with innovative solutions that enhance their real estate investments while leveraging the latest advancements in IT</p>
+  <p class= text-center >  We pride ourselves on being at the intersection of cutting-edge technology and the dynamic world of real estate finance. Our mission is to empower our clients with innovative solutions that enhance their real estate investments while leveraging the latest advancements in IT.</p>
     </div>
 
     <div class=text-center>
@@ -31,11 +40,13 @@
     
   <div class="row d-flex justify-content-center">
   
-    <div class="card" style="width: 28rem;">
+    <div class="card" style="width: 39rem;">
       
         <ul class="list-group list-group-flush">
 
            <div class=row>
+
+              <div class="bg-dark>
                  {% for job in jobs %}
 
               <div >
@@ -77,8 +88,12 @@
         </ul>
     </div>
   </div>
-   
 
+
+ 
+   
 </body>
  
+      
+     
 </html>
