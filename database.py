@@ -20,7 +20,7 @@ with open("root.crt", 'w') as file:
 
 def loaddb ():
 
-    DATABASE_URL = 'cockroachdb://murphy15713_outlook_:SdJjsfiDs3HNjdkZ11LM6A@spore-whippet-14967.7tt.aws-us-east-1.cockroachlabs.cloud:26257/defaultdb?sslmode=verify-full&sslrootcert=root.crt'
+    DATABASE_URL = os.environ['DB_CONNECTION']
     
      
     from sqlalchemy import create_engine
