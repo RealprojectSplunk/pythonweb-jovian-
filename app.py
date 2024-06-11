@@ -1,5 +1,5 @@
-from flask import Flask, render_template, request, redirect   
-from database import loaddb
+from flask import Flask, render_template, jsonify,request,redirect 
+from database import loaddb,load_job_from_db
 
 
 
@@ -8,11 +8,14 @@ app=Flask(__name__)
 def home():
     return render_template("home.html", jobs=loaddb(), Company="Parayil"  )
 
-JOBS= [
-  {"id":1,"title":"Data Analyst","location":"Bengaluru, India","salary":"100K"},
-  {"id":2,"title":"Data Scientist","location":"Delhi, India","salary":"200k"}
-   
-]
+
+@app.route("/jobs/<id>")
+
+def job_detail(id):
+  job=load_job_from_db(id)
+  return jsonify(job)
+  
+
 
 if __name__=="__main__":
   print("i am inside you")

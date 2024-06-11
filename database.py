@@ -1,22 +1,21 @@
 import os
-import requests
 
+import requests
 from sqlalchemy import create_engine, text
-from sqlalchemy.engine import url
-
-import requests
 
 # Send a GET request
 response = requests.get(
     'https://cockroachlabs.cloud/clusters/3263bee0-49b6-4ac3-84c6-19f69cb4398d/cert'
 )
 
-import os
 import requests
-
 
 with open("root.crt", 'w') as file:
     file.write(response.text)
+
+DATABASE_URL = os.environ['DB_CONNECTION']
+
+engine = create_engine(DATABASE_URL)
 
 def loaddb ():
 
@@ -50,3 +49,25 @@ def loaddb ():
 
 
 print (loaddb())
+
+
+
+
+
+def load_job_from_db(id):
+    with engine.connect() as conn:
+        val=id
+        result=conn.execute(text("SELECT * FROM jobs WHERE id =:val"), {"val":id})
+        
+        rows=result.all()
+        if len(rows)==0:
+            return None
+        else:
+            return rows[0]._asdict()
+            
+        
+
+
+
+
+ 
