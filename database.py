@@ -14,48 +14,39 @@ response = requests.get(
 import os
 import requests
 
-import pathlib
 
-# current working directory
-
-print(
-    '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@'
-)
-print(pathlib.Path().absolute())
-
-#os.chdir('/home')
-
-print(pathlib.Path().absolute())
-
-#base_url= os.environ.get('/$Home/postgresql/root.crt')
-
-# Save the response content to a file (use 'wb' for binary files like images, PDFs, etc.)
 with open("root.crt", 'w') as file:
     file.write(response.text)
 
+def loaddb ():
+
+    DATABASE_URL = 'cockroachdb://murphy15713_outlook_:SdJjsfiDs3HNjdkZ11LM6A@spore-whippet-14967.7tt.aws-us-east-1.cockroachlabs.cloud:26257/defaultdb?sslmode=verify-full&sslrootcert=root.crt'
+    
+     
+    from sqlalchemy import create_engine
+    
+    engine = create_engine(DATABASE_URL)
+    conn = engine.connect()
+    
+    #res = conn.execute(text("SELECT now()")).fetchall()
+   # print(res)
+    
+    res1 = conn.execute(text("SELECT * from jobs")).fetchall()
+    print(res1)
+    
+    result_dics = []
+    
+    for row in res1:
+        result_dics.append(row._asdict())
+    
+    print(result_dics)
 
 
-check= open('root.crt', 'r')
+    return result_dics
 
-print('check', check)
 
-DATABASE_URL = 'cockroachdb://murphy15713_outlook_:SdJjsfiDs3HNjdkZ11LM6A@spore-whippet-14967.7tt.aws-us-east-1.cockroachlabs.cloud:26257/defaultdb?sslmode=verify-full&sslrootcert=root.crt'
 
-print(DATABASE_URL)
-from sqlalchemy import create_engine
 
-engine = create_engine(DATABASE_URL)
-conn = engine.connect()
 
-res = conn.execute(text("SELECT now()")).fetchall()
-print(res)
 
-res1 = conn.execute(text("SELECT * from jobs")).fetchall()
-print(res1)
-
-result_dics = []
-
-for row in res1:
-    result_dics.append(row._asdict())
-
-print(result_dics)
+print (loaddb())

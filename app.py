@@ -1,11 +1,12 @@
 from flask import Flask, render_template, request, redirect   
+from database import loaddb
 
 
 
 app=Flask(__name__)
 @app.route("/")
 def home():
-    return render_template("home.html", jobs=JOBS, Company="Parayil"  )
+    return render_template("home.html", jobs=loaddb(), Company="Parayil"  )
 
 JOBS= [
   {"id":1,"title":"Data Analyst","location":"Bengaluru, India","salary":"100K"},
