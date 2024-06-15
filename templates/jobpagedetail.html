@@ -119,11 +119,11 @@
       <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
     </symbol>
   </svg>
-  
+
 </head>
-  
+
 <body>
- 
+
   <body>
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
       <symbol id="check2" viewBox="0 0 16 16">
@@ -173,96 +173,88 @@
             <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
           </button>
         </li>
-      </ul>
+     
     </div>
 
 
-  
+
          <div class="container">
      {%include "nav.html" %}
      {%include "navbottom.html" %}
- 
-    
 
-    
   <h1 class="text-center"></h1>
   </div>
-  
-  <img  src="static/banner.jpeg" height="500px" width=2000px>
-  
-    <div class="container">
-<h4 class="text-center">About Parayil </h4>
-  <p class= text-center >  We pride ourselves on being at the intersection of cutting-edge technology and the dynamic world of real estate finance. Our mission is to empower our clients with innovative solutions that enhance their real estate investments while leveraging the latest advancements in IT.</p>
+
+
+    <div class="row d-flex justify-content-center">
+
+      <div class="card" style="width: 39rem;">
+
+          <ul class="list-group list-group-flush">
+
+             <div class=row>
+
+                <div class="bg-dark>
+                   {% for job in jobsbyid %}
+
+                <div >
+                  <li class="list-group-item"> 
+                    <h6 >
+
+                    Role: {{job['title']}} 
+                    </h6>  
+
+
+                     <div class=col>
+                <h6 class=text-right>Location: {{job['location']}}</h6>
+
+                       <h6>
+                    Salary:$ {{job['salary']}} 
+                     </h6>
+                       <h6>
+                         Responsibilites:${{job['responsibilities']}} 
+                          </h6>
+
+
+                       <h6>
+                         Requirements:${{job['requirements']}} 
+                          </h6>
+
+                      <div class=row-5>
+                        <div class=col-5>
+
+                          
+                <button  type=button class="btn btn-outline-primary" > 
+
+
+                  Apply
+
+
+                </button>
+                      </div>
+                         </div>
+
+                      </div>
+                  </li>
+                   </div>
+                    {% endfor %}
+                </div>
+
+
+
+
+          </ul>
+      </div>
     </div>
 
-    <div class=text-center>
-     <button class=btn btn-primary btn-lg>Contact Us</button>
-</div>
-      
-     <div class=text-center>
-       <button class=btn btn-primary btn-lg>{{Company }} Open Positions</button>
-       </div>
-
-    
-  <div class="row d-flex justify-content-center">
-  
-    <div class="card" style="width: 39rem;">
-      
-        <ul class="list-group list-group-flush">
-
-           <div class=row>
-
-              <div class="bg-dark>
-                 {% for job in jobs %}
-
-              <div >
-                <li class="list-group-item"> 
-                  <h6>
-          
-                  Role: {{job['title']}} 
-                  </h6>  
-                    
-         
-                   <div class=col>
-              <h6 class=text-right>Location: {{job['location']}}</h6>
-
-                     <h6>
-                  Salary:$ {{job['salary']}} 
-                   </h6>
-                   
-                    <div class=row-5>
-                      <div class=col-5>
-              <button  type=button class="btn btn-outline-primary" href="/jobpagedetail.html"> 
-                
-                
-                Apply
-              
-              
-              </button>
-                    </div>
-                       </div>
-                     
-                    </div>
-                </li>
-                 </div>
-                  {% endfor %}
-              </div>
-
-           
 
 
-        </ul>
-    </div>
-  </div>
-
-
- 
 
 
 </body>
 
 
 
-      
-     
+
+
 </html>

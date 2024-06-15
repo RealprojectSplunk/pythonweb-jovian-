@@ -1,7 +1,10 @@
 import os
 
 import requests
-from sqlalchemy import create_engine, text
+from sqlalchemy import (
+    create_engine,
+    text,
+)
 
 # Send a GET request
 response = requests.get(
@@ -31,14 +34,14 @@ def loaddb ():
    # print(res)
     
     res1 = conn.execute(text("SELECT * from jobs")).fetchall()
-    print(res1)
+    #print( f'res1 is actually {res1}')
     
     result_dics = []
     
     for row in res1:
         result_dics.append(row._asdict())
     
-    print(result_dics)
+   # print(result_dics)
 
 
     return result_dics
@@ -48,26 +51,47 @@ def loaddb ():
 
 
 
-print (loaddb())
+#print (loaddb())
 
 
 
 
 
-def load_job_from_db(id):
-    with engine.connect() as conn:
-        val=id
-        result=conn.execute(text("SELECT * FROM jobs WHERE id =:val"), {"val":id})
-        
-        rows=result.all()
-        if len(rows)==0:
-            return None
-        else:
-            return rows[0]._asdict()
+
             
         
+def load_job_from_db(id):
+
+
+    DATABASE_URL = os.environ['DB_CONNECTION']
+
+
+    from sqlalchemy import create_engine
+
+    engine = create_engine(DATABASE_URL)
+    conn = engine.connect()
+
+    
+    with engine.connect() as conn:
+        myparam={"val":id}
+        sql=text("SELECT * FROM jobs WHERE jobs.id=:val")
+        result=conn.execute(sql, myparam).fetchall()
+        #result=conn.execute(sql, ({'id':'975548584460845000'}))
+
+  
+          
+
+
+  
+        rows_dict=[]
+        for row in result:
+           rows_dict.append(row._asdict())
+        return rows_dict
+   
 
 
 
+
+print(load_job_from_db(975548584460779521))
 
  
