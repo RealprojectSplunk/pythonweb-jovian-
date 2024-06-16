@@ -17,11 +17,11 @@ def list_jobs():
 
 
 
-@app.route("/jobpagedetail.html/<id>")
+@app.route("/jobs/<id>")
 def showjob_detail(id):
-  job=load_job_from_db(id)
+  jobsbyid=load_job_from_db(id)
   
-  return  render_template("jobpagedetail.html", jobsbyid=job, Company="Parayil"  )
+  return  render_template("jobpagedetail.html", jobsbyid=load_job_from_db(id),  Company="Parayil"  )
   
 
 @app.route("/jobs/api/<id>")
