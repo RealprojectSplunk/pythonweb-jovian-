@@ -75,7 +75,7 @@ def load_job_from_db(id):
     with engine.connect() as conn:
         myparam={"val":id}
         sql=text("SELECT * FROM jobs WHERE jobs.id=:val")
-        result=conn.execute(sql, myparam).fetchall()
+        result=conn.execute(sql, myparam ).fetchall()
         #result=conn.execute(sql, ({'id':'975548584460845000'}))
 
   

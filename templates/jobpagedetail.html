@@ -100,6 +100,10 @@
         .bd-mode-toggle .dropdown-menu .active .bi {
           display: block !important;
         }
+
+
+
+        
       </style>
 
       <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -209,28 +213,22 @@
                 <h6 class=text-right>Location: {{job['location']}}</h6>
 
                        <h6>
-                    Salary:$ {{job['salary']}} 
+                    Salary: {{job['salary']}} 
                      </h6>
                        <h6>
-                         Responsibilites:${{job['responsibilities']}} 
+                         Responsibilites:{{job['responsibilities']}} 
                           </h6>
 
 
                        <h6>
-                         Requirements:${{job['requirements']}} 
+                         Requirements:{{job['requirements']}} 
                           </h6>
 
                       <div class=row-5>
                         <div class=col-5>
 
                           
-                <button  type=button class="btn btn-outline-primary" > 
-
-
-                  Apply
-
-
-                </button>
+               
                       </div>
                          </div>
 
@@ -249,12 +247,30 @@
 
 
 
-
+   
 
 </body>
 
 
+   <div class=text-center>
+     <container>
+       <div>
 
+         {% for job in jobsbyid %}
+     <form action="/jobs/apply/{{job['id']}}">
 
+       <label for="fullname">Full Name:</label><br>
+       <input type="text" id="fullname" name="fullname" placeholder='Micheal Jackson'><br>
+       <label for="email">Email:</label><br>
+       <input type="email" id="email" name="email"placeholder="michealjackson@gmail.com" ><br>
+       <label for="linkedin">LinkedIn URL:</label><br>
+       <input type="url" id="linkedin" name="linkedin"placeholder="michealjackson/linkedin.com"><br>
+       <input type="submit" class="btn btn-outline-primary" name="Do" label=Do>
 
+     </form>
+         {% endfor %}
+
+         </div>
+       </container>
+   </div>
 </html>
