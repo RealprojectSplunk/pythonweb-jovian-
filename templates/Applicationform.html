@@ -12,7 +12,7 @@
   <div>
     {% for job in jobsbyid %}
     
-<form action="/jobs/apply/{{job['id']}}">
+<form action="/jobs/apply/{{job['id']}}" method="post">
   
   <label for="fullname">Full Name:</label><br>
   <input type="text" id="fullname" name="fullname" placeholder='Micheal Jackson'><br>

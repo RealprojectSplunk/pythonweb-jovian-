@@ -26,11 +26,14 @@ def showjob_detail(id):
 
 
 
-@app.route("/jobs/apply/<id>")
+@app.route("/jobs/apply/<id>", methods=['post']) 
 def applicationform(id ):
-  data= request.args
+  data= request.form
   job=load_job_from_db(id)
-  return jsonify(data)
+  return render_template('application_submitted.html', 
+     application=data,
+     job=job)
+
 
 @app.route("/jobs/api/<id>")
 def showjobapi_detail(id):
