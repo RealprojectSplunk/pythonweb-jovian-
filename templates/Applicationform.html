@@ -10,8 +10,8 @@
 
 <container>
   <div>
+    {% for job in jobsbyid %}
     
-
 <form action="/jobs/apply/{{job['id']}}">
   
   <label for="fullname">Full Name:</label><br>
@@ -20,8 +20,26 @@
   <input type="email" id="email" name="email"placeholder="michealjackson@gmail.com" ><br>
   <label for="linkedin">LinkedIn URL:</label><br>
   <input type="url" id="linkedin" name="linkedin"placeholder="michealjackson/linkedin.com"><br>
-  <input type="submit" class="btn btn-outline-primary" name="Do" label=Do>
   
+  <div class="mb-2">
+    <label>Education</label><br>
+    <textarea name="education"></textarea>
+  </div>
+
+  <div class="mb-2">
+    <label>Work Experience</label><br>
+    <textarea name="work_experience"></textarea>
+  </div>
+
+  <div class="mb-2">
+  <label>Resume URL</label><br>
+  <input type="url" name="resume_url">
+  </div>
+  
+  <input type="submit" class="btn btn-outline-primary" name="Do" label=Do>
+
+
+  {% endfor %}
 </form>
 
 
