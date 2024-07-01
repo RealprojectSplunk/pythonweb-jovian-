@@ -646,6 +646,20 @@ pymysql = ["pymysql"]
 sqlcipher = ["sqlcipher3_binary"]
 
 [[package]]
+name = "sqlalchemy-cockroachdb"
+version = "2.0.2"
+description = "CockroachDB dialect for SQLAlchemy"
+optional = false
+python-versions = "*"
+files = [
+    {file = "sqlalchemy-cockroachdb-2.0.2.tar.gz", hash = "sha256:119756eb905855d6a11345b99cfe853031a3fe598a9c4bf35a8ddac9f89fe8cc"},
+    {file = "sqlalchemy_cockroachdb-2.0.2-py3-none-any.whl", hash = "sha256:0d5d50e805b024cb2ccd85423a5c1a367d1a56a5cd0ea47765233fd47665070d"},
+]
+
+[package.dependencies]
+SQLAlchemy = "*"
+
+[[package]]
 name = "typing-extensions"
 version = "4.12.1"
 description = "Backported and Experimental Type Hints for Python 3.8+"
@@ -704,4 +718,4 @@ watchdog = ["watchdog (>=2.3)"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.10.0,<3.11"
-content-hash = "4742ec6e265df77f1512363181f20fd64728c9be7ab6e25a2be8954e8046a83d"
+content-hash = "a4410bd3c48a2adb268227952201beb9ee6c8a15f6b0c35979c8a20146b16fe7"

@@ -12,14 +12,14 @@
   <div>
     {% for job in jobsbyid %}
     
-<form action="/jobs/apply/{{job['id']}}" method="post">
+<form action="/jobs/apply/{{job['job_id']}}" method="post">
   
-  <label for="fullname">Full Name:</label><br>
-  <input type="text" id="fullname" name="fullname" placeholder='Micheal Jackson'><br>
+  <label for="full_name">Full Name:</label><br>
+  <input type="text" id="full_name" name="full_name" placeholder='Micheal Jackson'><br>
   <label for="email">Email:</label><br>
   <input type="email" id="email" name="email"placeholder="michealjackson@gmail.com" ><br>
-  <label for="linkedin">LinkedIn URL:</label><br>
-  <input type="url" id="linkedin" name="linkedin"placeholder="michealjackson/linkedin.com"><br>
+  <label for="linkedin_url">LinkedIn URL:</label><br>
+  <input type="url" id="linkedin_url" name="linkedin_url"placeholder="michealjackson/linkedin.com"><br>
   
   <div class="mb-2">
     <label>Education</label><br>

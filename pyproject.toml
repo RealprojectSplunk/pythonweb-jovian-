@@ -11,6 +11,7 @@ sqlalchemy = "^2.0.30"
 requests = "^2.32.3"
 consultor = "^0.2.0"
 git-python = "^1.0.3"
+sqlalchemy-cockroachdb = "^2.0.2"
 
 [tool.pyright]
 # https://github.com/microsoft/pyright/blob/main/docs/configuration.md
