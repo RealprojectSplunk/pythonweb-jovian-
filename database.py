@@ -2,9 +2,8 @@ import os
 
 import requests
 from sqlalchemy import create_engine, text
-
 from sqlalchemy.orm import sessionmaker
-from sqlalchemy_cockroachdb import run_transaction, transaction
+from sqlalchemy_cockroachdb import run_transaction
 
 # Send a GET request
 response = requests.get(
@@ -96,16 +95,15 @@ print(load_job_from_db(975548584460779521))
 
 
 def add_application_to_db(job_id, data):
-
+ 
     DATABASE_URL = os.environ['DB_CONNECTION']
     engine = create_engine(DATABASE_URL)
     conn = engine.connect()
     Session = sessionmaker(engine)
     session = Session()
-
-    
+    job_id=job_id
     with engine.connect() as conn:
-      mypara={'job_id':job_id, 'full_name':data['full_name'],
+      mypara={'job_id':job_id,'full_name':data['full_name'],
        'email':data['email'],
        'linkedin_url':data['linkedin_url'],
        'education':data['education'],
@@ -113,45 +111,51 @@ def add_application_to_db(job_id, data):
        'resume_url':data['resume_url']}
       query = text("INSERT INTO applications (job_id, full_name, email, linkedin_url, education, work_experience, resume_url) VALUES (:job_id, :full_name, :email, :linkedin_url, :education, :work_experience, :resume_url) ;")
       insert1=conn.execute(query,mypara)
-      result = run_transaction(engine, lambda session: session.execute(query))
+      result = run_transaction(engine, lambda session: session.execute(query,mypara))
+      afterdata = conn.execute(text("SELECT * from applications")).fetchall()
+      rows_dict=[]
+      for row in afterdata:
+          rows_dict.append(row._asdict())
+      print('Afterdata row for data 999999999999999999:  ')# check if it inserted the above row for data 999999999999999999
+      for items in (rows_dict):
+              print( items['job_id'] )
  
 
 #add_application_to_db(job_id, data)
 
 
-def add_application_to_db1():
-    DATABASE_URL = os.environ['DB_CONNECTION']
-    engine = create_engine(DATABASE_URL)
-    conn = engine.connect()
-    Session = sessionmaker(engine)
-    session = Session()
-
-    with engine.connect() as conn:
-           initialdata = conn.execute(text("SELECT * from applications")).fetchall()
-           rows_dict=[]
-           for row in initialdata:
-                 rows_dict.append(row._asdict())
-           print('Initial data ')#check initial data in the applications table
-           for items in (rows_dict):
-                 print( items['job_id'] )
-    query = text("INSERT into applications (job_id, full_name, email, linkedin_url, education, work_experience, resume_url) VALUES(999999999999999999,'Employee Name','testaccount@gmail.com', 'www.linkedin.com','test data','datawork_experience','www.linkedin.com')  RETURNING id;")
-    conn = engine.connect()
-    insert= conn.execute(query)
-    result = run_transaction(engine, lambda session: session.execute(query))
-
-    afterdata = conn.execute(text("SELECT * from applications")).fetchall()
-    rows_dict=[]
-    for row in afterdata:
-        rows_dict.append(row._asdict())
-    print('Afterdata row for data 999999999999999999:  ')# check if it inserted the above row for data 999999999999999999
-    for items in (rows_dict):
-            print( items['job_id'] )
-    
-    
-    
-
-
-
+# def add_application_to_db1():
+#     DATABASE_URL = os.environ['DB_CONNECTION']
+#     engine = create_engine(DATABASE_URL)
+#     conn = engine.connect()
+#     Session = sessionmaker(engine)
+#     session = Session()
+# 
+#     with engine.connect() as conn:
+#            initialdata = conn.execute(text("SELECT * from applications")).fetchall()
+#            rows_dict=[]
+#            for row in initialdata:
+#                  rows_dict.append(row._asdict())
+#            print('Initial data ')#check initial data in the applications table
+#            for items in (rows_dict):
+#                  print( items['job_id'] )
+#     query = text("INSERT into applications (job_id, full_name, email, linkedin_url, education, work_experience, resume_url) VALUES(099999999999999999,'Employee Name','testaccount@gmail.com', 'www.linkedin.com','test data','datawork_experience','www.linkedin.com')  RETURNING id;")
+#     conn = engine.connect()
+#     insert= conn.execute(query)
+#     result = run_transaction(engine, lambda session: session.execute(query))
+# 
+#     afterdata = conn.execute(text("SELECT * from applications")).fetchall()
+#     rows_dict=[]
+#     for row in afterdata:
+#         rows_dict.append(row._asdict())
+#     print('Afterdata row for data 999999999999999999:  ')# check if it inserted the above row for data 999999999999999999
+#     for items in (rows_dict):
+#             print( items['job_id'] )
+#     
+#     
+#     
+# 
+# add_application_to_db1()
 
 
     

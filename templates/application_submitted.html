@@ -10,30 +10,33 @@
  
  <div >   {% include 'nav.html' %}</div>
   
-  
+       {% for job in jobs %}
       <h1 class="text-center mt-2 mb-4">
        Parayil LLC
       </h1>
 
       <p>Your application for the role of <b>{{job['title']}}</b> at Jovian has been submitted!</p>
-      
+
+    
       <b>Full Name</b>
-      <div class="mb-2">{{application['full_name']}}</div>
+      <div class="mb-2">{{data['full_name']}}</div>
   
       <b>Email</b>
-      <div class="mb-2">{{application['email']}}</div>
+      <div class="mb-2">{{data['email']}}</div>
   
       <b>LinkedIn URL</b>
-      <div class="mb-2">{{application['linkedin_url']}}</div>
+      <div class="mb-2">{{data['linkedin_url']}}</div>
   
       <b>Education</b>
-      <div class="mb-2">{{application['education']}}</div>
+      <div class="mb-2">{{data['education']}}</div>
   
       <b>Work Experience</b>
-      <div class="mb-2">{{application['work_experience']}}</div>
+      <div class="mb-2">{{data['work_experience']}}</div>
   
       <b>Resume URL</b>
-      <div class="mb-2">{{application['resume_url']}}</div>
+      <div class="mb-2">{{data['resume_url']}}</div>
+
+     {% endfor %}
     </div>
     
   </body>

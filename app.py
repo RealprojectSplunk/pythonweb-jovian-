@@ -20,20 +20,20 @@ def list_jobs():
 
 @app.route("/jobs/<job_id>")
 def showjob_detail(job_id):
-  jobsbyid=load_job_from_db(job_id)
+  jobs=load_job_from_db(job_id)
   
-  return  render_template("jobpagedetail.html", jobsbyid=load_job_from_db(job_id),  Company="Parayil"  )
+  return  render_template("jobpagedetail.html", jobs=load_job_from_db(job_id),  Company="Parayil"  )
 
 
 
 @app.route("/jobs/apply/<job_id>", methods=['post']) 
 def applicationform(job_id ):
   data= request.form
-  job=load_job_from_db(job_id)
+  jobs=load_job_from_db(job_id)
   add_application_to_db(job_id, data)
+  #return jsonify(data) 
   return render_template('application_submitted.html', 
-     data=data,
-     job=job)
+     data=data,jobs=load_job_from_db(job_id), job_id=job_id )
 
 
 @app.route("/jobs/api/<id>")

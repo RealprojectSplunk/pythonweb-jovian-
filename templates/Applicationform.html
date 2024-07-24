@@ -10,10 +10,13 @@
 
 <container>
   <div>
-    {% for job in jobsbyid %}
+    {% for job in jobs %}
     
-<form action="/jobs/apply/{{job['job_id']}}" method="post">
-  
+<form action="/jobs/apply/{{job['id']}}" method="post">
+  <h5>
+  jobid: {{job['id']}}  #Hide  the job id after validating post request job.id
+    </h5>
+  <br>
   <label for="full_name">Full Name:</label><br>
   <input type="text" id="full_name" name="full_name" placeholder='Micheal Jackson'><br>
   <label for="email">Email:</label><br>
