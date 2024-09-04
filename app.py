@@ -22,7 +22,7 @@ def list_jobs():
 def showjob_detail(job_id):
   jobs=load_job_from_db(job_id)
   
-  return  render_template("jobpagedetail.html", jobs=load_job_from_db(job_id),  Company="Parayil"  )
+  return  render_template("jobpagedetail.html", jobs=load_job_from_db(job_id),  Company="PSAE INFO LLC"  )
 
 
 
